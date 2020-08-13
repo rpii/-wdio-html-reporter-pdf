@@ -72,8 +72,9 @@ webdriver.io will call the reporter for each test suite.  It does not aggregate 
     onComplete: function(exitCode, config, capabilities, results) {
         (async () => {
             await global.reportAggregator.createReport();
-            let pdfFile = './reports/master-report.pdf';
-            await printPdf('./reports/html-reports/', pdfFile) ;
+            let htmlReportFile =  path.resolve(__dirname,'../reports/master-report.html');
+            let pdfFile = path.resolve(__dirname, '../reports/master-report.pdf');
+            await printPdf(htmlReportFile, pdfFile) ;
         })();
     },
     
