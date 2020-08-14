@@ -9,7 +9,7 @@ The easiest way is to keep the `@rpii/wdio-html-reporter-pdf` as a devDependency
 ```javascript
 {
   "devDependencies": {
-    "@rpii/wdio-html-reporter-pdf": "~6.1.0"
+    "@rpii/wdio-html-reporter-pdf": "~6.1.3"
   }
 }
 ```
@@ -72,9 +72,12 @@ webdriver.io will call the reporter for each test suite.  It does not aggregate 
     onComplete: function(exitCode, config, capabilities, results) {
         (async () => {
             await global.reportAggregator.createReport();
+            // need full paths
             let htmlReportFile =  path.resolve(__dirname,'../reports/html-reports/master-report.html');
             let pdfFile = path.resolve(__dirname, '../reports/master-report.pdf');
-            await printPdf(htmlReportFile, pdfFile) ;
+            //for linux you will need these options
+            let options = ['--no-sandbox','--disable-gpu','--disable-extensions'] ;
+            await printPdf(htmlReportFile, pdfFile, options) ;
         })();
     },
     
