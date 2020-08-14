@@ -1,6 +1,6 @@
 {
   "name": "@rpii/wdio-html-reporter-pdf",
-  "version": "6.1.2",
+  "version": "6.1.3",
   "description": "WebdriverIO report plugin. Converts HTML formatted report to pdf. compatible with webdriverio version 6",
   "main": "build/printPdf.js",
   "scripts": {
@@ -8,7 +8,7 @@
     "build": "babel src/* -d build/ && babel test/* -d build-test",
     "clean:build": "rimraf ./build",
     "clean:reports": "rimraf ./reports",
-    "test": "mocha build-test/**/*.js --require @babel/register"
+    "test": "mocha --timeout 10000 build-test/**/*.js --require @babel/register"
   },
   "repository": {
     "type": "git",
@@ -36,11 +36,9 @@
   "homepage": "https://github.com/rpii/wdio-html-reporter-pdf#readme",
   "dependencies": {
     "copyfiles": "^2.3.0",
-    "fs-extra": "^9.0.0",
+    "fs-extra": "^9.0.1",
     "lodash": "^4.17.19",
     "mocha": "^7.1.1",
-    "moment": "^2.24.0",
-    "moment-duration-format": "^2.3.2",
     "puppeteer": "^5.2.1"
   },
   "devDependencies": {

@@ -20,7 +20,7 @@ The following code shows the default wdio test runner configuration. Just add an
 ```javascript
 // wdio.conf.js
 import { ReportAggregator, HtmlReporter} from '@rpii/wdio-html-reporter' ;
-var printPdf = require('@rpii/wdio-html-reporter-pdf') ;
+var printPdf = require('@rpii/wdio-html-reporter-pdf').default ;
 module.exports = {
 
   
@@ -72,7 +72,7 @@ webdriver.io will call the reporter for each test suite.  It does not aggregate 
     onComplete: function(exitCode, config, capabilities, results) {
         (async () => {
             await global.reportAggregator.createReport();
-            let htmlReportFile =  path.resolve(__dirname,'../reports/master-report.html');
+            let htmlReportFile =  path.resolve(__dirname,'../reports/html-reports/master-report.html');
             let pdfFile = path.resolve(__dirname, '../reports/master-report.pdf');
             await printPdf(htmlReportFile, pdfFile) ;
         })();

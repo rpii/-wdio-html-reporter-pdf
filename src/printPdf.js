@@ -3,11 +3,14 @@ const path = require( "path") ;
 const puppeteer = require('puppeteer');
 const fs = require('fs-extra');
 
-async function printPdf(htmlFile, pdfFile, args) {
+async function printPdf(htmlFile, pdfFile, optArgs) {
     try {
+        console.log("printPdf starting");
         const browser = await puppeteer.launch({
             headless: true,
-            args: args
+            timeout: 360000,
+            dumpio: true,
+            args: optArgs
         });
         const page = await browser.newPage();
         let contentHtml = fs.readFileSync(htmlFile, 'utf8');
@@ -31,6 +34,7 @@ async function printPdf(htmlFile, pdfFile, args) {
         });
 
         await browser.close();
+        console.log("printPdf completed.");
         return pdf;
     } catch (error) {
         console.error(error);
