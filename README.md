@@ -15,71 +15,32 @@ The easiest way is to keep the `@rpii/wdio-html-reporter-pdf` as a devDependency
 ```
 
 ## Configuration
-The following code shows the default wdio test runner configuration. Just add an HtmlReporter object as another reporter to the reporters array.  Syntax shown requires babel:
+Add a file called make-pdf.js in the root of the project.
 
-```javascript
-// wdio.conf.js
-import { ReportAggregator, HtmlReporter} from '@rpii/wdio-html-reporter' ;
-var printPdf = require('@rpii/wdio-html-reporter-pdf').default ;
-module.exports = {
+There are difficulties in puppeteer if you try to integrate the code into wdio.conf.js.
 
-  
-  reporters: ['spec',
-        [HtmlReporter, {
-            debug: true,
-            outputDir: './reports/html-reports/',
-            filename: 'report.html',
-            reportTitle: 'Test Report Title',
-            
-            //to show the report in a browser when done
-            showInBrowser: true,
+The following code shows a simple way to add as a post build action.  you can invoke it from a pipeline if you are using jenkins.
 
-            //to turn on screenshots after every test
-            useOnAfterCommandForScreenshot: false,
 
-            //to initialize the logger
-            LOG: log4j.getLogger("default")
-        }
-        ]
-    ]
-    
- 
-};
-```
-## Configuration Options:
-  
-### To generate a master report for all suites
+```javascript / babel
 
-webdriver.io will call the reporter for each test suite.  It does not aggregate the reports.  To do this, add the following event handlers to your wdio.config.js
-
-```javascript
-    onPrepare: function (config, capabilities) {
-
-        let reportAggregator = new ReportAggregator({
-            outputDir: './reports/html-reports/',
-            filename: 'master-report.html',
-            reportTitle: 'Master Report',
-
-            browserName : browser.capabilities.browserName,
-            // to use the template override option, can point to your own file in the test project:
-            // templateFilename: path.resolve(__dirname, '../template/wdio-html-reporter-alt-template.hbs')
-        });
-        reportAggregator.clean() ;
-
-        global.reportAggregator = reportAggregator;
-    },
-    
-    onComplete: function(exitCode, config, capabilities, results) {
-        (async () => {
-            await global.reportAggregator.createReport();
+// babel version
+let printPdf = require('@rpii/wdio-html-reporter-pdf').default ;
+(async () => {
             // need full paths
-            let htmlReportFile =  path.resolve(__dirname,'../reports/html-reports/master-report.html');
-            let pdfFile = path.resolve(__dirname, '../reports/master-report.pdf');
+            let htmlReportFile =  path.resolve(__dirname,'reports/html-reports/master-report.html');
+            let pdfFile = path.resolve(__dirname, 'reports/master-report.pdf');
             //for linux you will need these options
             let options = ['--no-sandbox','--disable-gpu','--disable-extensions'] ;
             await printPdf(htmlReportFile, pdfFile, options) ;
-        })();
-    },
+})();
     
 ``` 
 
+Add a line to your package.json under scripts
+```javascript
+    "pdf": "node make-pdf.js"
+``` 
+
+## Usage
+Run after completing a build.
