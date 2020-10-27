@@ -1,6 +1,7 @@
 # wdio-html-reporter-pdf
 Generate a pdf from an html-report.  
-Requires version 6.1.0 of wdio-hmtl-reporter
+Requires version 6.2.0 of wdio-hmtl-reporter
+Adds support for collapsed test sections
 
 ## Installation
 
@@ -9,7 +10,7 @@ The easiest way is to keep the `@rpii/wdio-html-reporter-pdf` as a devDependency
 ```javascript
 {
   "devDependencies": {
-    "@rpii/wdio-html-reporter-pdf": "~6.1.3"
+    "@rpii/wdio-html-reporter-pdf": "~6.2.0"
   }
 }
 ```

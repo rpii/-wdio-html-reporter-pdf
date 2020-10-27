@@ -21,6 +21,9 @@ async function printPdf(htmlFile, pdfFile, optArgs) {
         await page.evaluate(_ => {
             $('.suite-header').click();
         });
+        await page.evaluate(_ => {
+            $('.test-header').click();
+        });
         const pdf = await page.pdf({
             path: pdfFile, // Saves pdf to disk.
             preferCSSPageSize: true,
