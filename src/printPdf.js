@@ -5,7 +5,7 @@ const fs = require('fs-extra');
 
 async function printPdf(htmlFile, pdfFile, optArgs) {
     try {
-        console.log("printPdf starting");
+        console.log("printPdf starting for " + htmlFile + " to " + pdfFile);
         const browser = await puppeteer.launch({
             headless: true,
             timeout: 360000,
