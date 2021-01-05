@@ -1,6 +1,6 @@
 {
   "name": "@rpii/wdio-html-reporter-pdf",
-  "version": "6.2.1",
+  "version": "6.2.3",
   "description": "WebdriverIO report plugin. Converts HTML formatted report to pdf. compatible with webdriverio version 6",
   "main": "build/printPdf.js",
   "scripts": {
@@ -26,7 +26,8 @@
     "wdio-reporter",
     "wdio-html-reporter",
     "wdio-html-format-reporter",
-    "wdio-html-format-reporter-pdf"
+    "wdio-html-format-reporter-pdf",
+    "pdf"
   ],
   "author": "Rich Peters",
   "license": "MIT",

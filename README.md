@@ -1,7 +1,7 @@
 # wdio-html-reporter-pdf
 Generate a pdf from an html-report.  
 Requires version 6.2.0 of wdio-hmtl-reporter
-Adds support for collapsed test sections
+
 
 ## Installation
 
@@ -33,7 +33,7 @@ let printPdf = require('@rpii/wdio-html-reporter-pdf').default ;
             let pdfFile = path.resolve(__dirname, 'reports/master-report.pdf');
             //for linux you will need these options
             let options = ['--no-sandbox','--disable-gpu','--disable-extensions'] ;
-            await printPdf(htmlReportFile, pdfFile, options) ;
+            await printPdf(htmlReportFile, pdfFile, options, undefined) ;
 })();
     
 ``` 
@@ -45,3 +45,5 @@ Add a line to your package.json under scripts
 
 ## Usage
 Run after completing a build.
+
+If you need to specify a path to chrome, that is the fourth parameter.

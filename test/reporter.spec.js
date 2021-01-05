@@ -29,7 +29,7 @@ describe('PdfPrint', () => {
             let htmlReportFile =  path.resolve(__dirname,'../reports/html-reports/master-report.html');
             // let options = ['--disable-gpu','--no-sandbox'] ;
             let options = ['--no-sandbox'] ;
-            await printPdf(htmlReportFile, pdfFile, options);
+            await printPdf(htmlReportFile, pdfFile, options, undefined);
         });
     });
 });

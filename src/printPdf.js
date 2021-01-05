@@ -3,15 +3,20 @@ const path = require( "path") ;
 const puppeteer = require('puppeteer');
 const fs = require('fs-extra');
 
-async function printPdf(htmlFile, pdfFile, optArgs) {
+async function printPdf(htmlFile, pdfFile, optArgs, chromePath ) {
     try {
         console.log("printPdf starting for " + htmlFile + " to " + pdfFile);
-        const browser = await puppeteer.launch({
+        let options = {
             headless: true,
             timeout: 360000,
             dumpio: true,
             args: optArgs
-        });
+        };
+        if (chromePath) {
+            options.executablePath = chromePath;
+        }
+
+        const browser = await puppeteer.launch(options);
         const page = await browser.newPage();
         let contentHtml = fs.readFileSync(htmlFile, 'utf8');
         await page.emulateMediaType('screen');
