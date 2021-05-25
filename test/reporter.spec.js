@@ -24,6 +24,7 @@ let printPdf = require('../build/printPdf.js').default ;
 describe('PdfPrint', () => {
 
     describe('on create', function () {
+        this.timeout(30000);
         it('should create the pdf file', async () => {
             let pdfFile = path.resolve(__dirname, '../reports/master-report.pdf');
             let htmlReportFile =  path.resolve(__dirname,'../reports/html-reports/master-report.html');

@@ -1,6 +1,6 @@
 # wdio-html-reporter-pdf
 Generate a pdf from an html-report.  
-Requires version 6.2.0 of wdio-hmtl-reporter
+Requires version 6.2.0 or later of wdio-hmtl-reporter to generate the html report
 
 
 ## Installation
@@ -14,6 +14,10 @@ The easiest way is to keep the `@rpii/wdio-html-reporter-pdf` as a devDependency
   }
 }
 ```
+## Updates
+
+Updated version of puppeteer to get rid of issues.
+
 
 ## Configuration
 Add a file called make-pdf.js in the root of the project.
@@ -41,6 +45,11 @@ let printPdf = require('@rpii/wdio-html-reporter-pdf').default ;
 Add a line to your package.json under scripts
 ```javascript
     "pdf": "node make-pdf.js"
+``` 
+To use an already installed chrome:  Add a line to your package.json under scripts
+
+```javascript
+    "pdf-chrome-linux": "node make-pdf.js /usr/bin/google-chrome"
 ``` 
 
 ## Usage
