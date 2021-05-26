@@ -24,10 +24,14 @@ async function printPdf(htmlFile, pdfFile, optArgs, chromePath ) {
         await page.goto('file://' + htmlFile);
         await page.setContent(contentHtml);
         await page.evaluate(_ => {
-            $('.suite-header').click();
+            document.querySelectorAll('.suite-header').forEach(item => {
+                item.click();
+            });
         });
         await page.evaluate(_ => {
-            $('.test-header').click();
+            document.querySelectorAll('.test-header').forEach(item => {
+                item.click();
+            });
         });
         const pdf = await page.pdf({
             path: pdfFile, // Saves pdf to disk.
