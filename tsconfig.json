@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "target": "es6",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "declaration": true,
+    "allowJs": true,
+    "noEmit": false,
+    "strict": true,
+    "isolatedModules": false,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports" : true,
+    "noImplicitAny": true,
+    "lib": [
+      "es2016",
+      "dom"
+    ],
+    "outDir": "./lib/",
+    "types": [
+      "node",
+      "puppeteer"
+    ]
+  },
+  "include": [
+    "./src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+  "compileOnSave": false
+}

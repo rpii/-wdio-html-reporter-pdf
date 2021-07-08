@@ -2,7 +2,5 @@ src
 .idea
 node_modules
 test
-reports
-build-test
 logs
 

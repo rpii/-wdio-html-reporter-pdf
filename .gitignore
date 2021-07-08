@@ -1,7 +1,5 @@
 .yarnclean
-build
-build-test
-dist
+lib
 .idea
 reports
 node_modules

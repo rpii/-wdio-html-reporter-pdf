@@ -1,14 +1,16 @@
 {
   "name": "@rpii/wdio-html-reporter-pdf",
-  "version": "6.3.1",
+  "version": "7.0.0",
   "description": "WebdriverIO report plugin. Converts HTML formatted report to pdf. compatible with webdriverio version 6",
-  "main": "build/printPdf.js",
+  "main": "lib/printPdf.js",
   "scripts": {
-    "build:test": "babel test/* -d build-test",
-    "build": "babel src/* -d build/ && babel test/* -d build-test",
-    "clean:build": "rimraf ./build",
+    "build": "tsc",
+    "clean": "rimraf ./lib ./reports ./logs",
+    "clean:build": "rimraf ./lib",
     "clean:reports": "rimraf ./reports",
-    "test": "mocha --timeout 10000 build-test/**/*.js --require @babel/register"
+    "test": "mocha --timeout 10000 ./test/**/*.ts",
+    "symlink": "npm link",
+    "use:symlink": "npm link @rpii/wdio-html-reporter-pdf"
   },
   "repository": {
     "type": "git",
@@ -40,39 +42,19 @@
     "fs-extra": "^10.0.0",
     "lodash": "^4.17.21",
     "mocha": "^7.1.1",
-    "puppeteer": "^9.1.1"
+    "puppeteer": "^10.1.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.8.4",
-    "@babel/core": "^7.9.0",
-    "@babel/node": "^7.8.7",
-    "@babel/plugin-proposal-class-properties": "^7.8.3",
-    "@babel/plugin-proposal-export-default-from": "^7.8.3",
-    "@babel/plugin-proposal-function-bind": "^7.8.3",
-    "@babel/plugin-proposal-optional-catch-binding": "^7.8.3",
-    "@babel/plugin-syntax-export-default-from": "^7.8.3",
-    "@babel/preset-env": "^7.9.0",
-    "@babel/preset-typescript": "^7.9.0",
-    "@babel/register": "^7.9.0",
-    "babel-plugin-source-map-support": "^2.1.1",
-    "chai": "^4.2.0",
+    "@types/node": "^14.14.31",
+    "@types/mocha": "^8.2.2",
+    "ts-node": "^10.0.0",
+    "tsconfig-paths": "^3.9.0",
+    "typescript": "^4.3.5",
     "log4js": "^6.3.0",
     "mocha": "^7.1.1",
     "rimraf": "^3.0.2"
   },
   "contributors": [
     "Rich Peters <16782353+rpii@users.noreply.github.com>"
-  ],
-  "babel": {
-    "presets": [
-      [
-        "@babel/preset-env",
-        {
-          "targets": {
-            "node": "current"
-          }
-        }
-      ]
-    ]
-  }
+  ]
 }

@@ -1,7 +1,8 @@
+import printPdf from '../lib/printPdf.js' ;
 const fs = require('fs-extra');
 const path = require('path');
-import {expect} from 'chai';
 const log4js = require ('log4js') ;
+
 log4js.configure({
     appenders: {
         fileLog: {
@@ -19,17 +20,15 @@ log4js.configure({
     }
 });
 
-let printPdf = require('../build/printPdf.js').default ;
-
 describe('PdfPrint', () => {
 
     describe('on create', function () {
         this.timeout(30000);
         it('should create the pdf file', async () => {
-            let pdfFile = path.resolve(__dirname, '../reports/master-report.pdf');
-            let htmlReportFile =  path.resolve(__dirname,'../reports/html-reports/master-report.html');
+            let pdfFile = path.resolve(__dirname, '../test/reports/master-report.pdf');
+            let htmlReportFile =  path.resolve(__dirname,'../test/reports/html-reports/master-report.html');
             // let options = ['--disable-gpu','--no-sandbox'] ;
-            let options = ['--no-sandbox'] ;
+            let options : string[] = ['--no-sandbox'] ;
             await printPdf(htmlReportFile, pdfFile, options, undefined);
         });
     });

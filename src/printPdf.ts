@@ -3,7 +3,7 @@ const path = require( "path") ;
 const puppeteer = require('puppeteer');
 const fs = require('fs-extra');
 
-async function printPdf(htmlFile, pdfFile, optArgs, chromePath ) {
+async function printPdf(htmlFile:string, pdfFile:string, optArgs:string[], chromePath:string ) {
     try {
         console.log("printPdf starting for " + htmlFile + " to " + pdfFile);
         let options = {
@@ -13,6 +13,7 @@ async function printPdf(htmlFile, pdfFile, optArgs, chromePath ) {
             args: optArgs
         };
         if (chromePath) {
+            //@ts-ignore
             options.executablePath = chromePath;
         }
 
@@ -23,13 +24,16 @@ async function printPdf(htmlFile, pdfFile, optArgs, chromePath ) {
         await page.setDefaultNavigationTimeout(360000);
         await page.goto('file://' + htmlFile);
         await page.setContent(contentHtml);
-        await page.evaluate(_ => {
+
+        await page.evaluate((_:any) => {
             document.querySelectorAll('.suite-header').forEach(item => {
+                //@ts-ignore
                 item.click();
             });
         });
-        await page.evaluate(_ => {
+        await page.evaluate((_:any) => {
             document.querySelectorAll('.test-header').forEach(item => {
+                //@ts-ignore
                 item.click();
             });
         });

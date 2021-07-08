@@ -1,6 +1,9 @@
 # wdio-html-reporter-pdf
 Generate a pdf from an html-report.  
-Requires version 6.2.0 or later of wdio-hmtl-reporter to generate the html report
+Requires version 7.7.0 or later of wdio-hmtl-nice-reporter to generate the html report
+#### Newest Features:
+
+    Upgrade: rewritten in typescript, update puppeteer.  
 
 
 ## Installation
@@ -10,7 +13,7 @@ The easiest way is to keep the `@rpii/wdio-html-reporter-pdf` as a devDependency
 ```javascript
 {
   "devDependencies": {
-    "@rpii/wdio-html-reporter-pdf": "~6.2.0"
+    "@rpii/wdio-html-reporter-pdf": "~7.0.0"
   }
 }
 ```
