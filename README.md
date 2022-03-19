@@ -1,8 +1,8 @@
 # wdio-html-reporter-pdf
 Generate a pdf from an html-report.  
-Requires version 7.7.0 or later of wdio-hmtl-nice-reporter to generate the html report
+Requires version 7.7.0 or later of wdio-html-nice-reporter to generate the html report
 #### Newest Features:
-
+    Upgrade: update puppeteer version.  
     Upgrade: rewritten in typescript, update puppeteer.  
 
 
