@@ -8,7 +8,7 @@ async function printPdf(htmlFile:string, pdfFile:string, optArgs:string[], chrom
         console.log("printPdf starting for " + htmlFile + " to " + pdfFile);
         let options = {
             headless: true,
-            timeout: 360000,
+            timeout: 0,
             dumpio: true,
             args: optArgs
         };
@@ -21,7 +21,7 @@ async function printPdf(htmlFile:string, pdfFile:string, optArgs:string[], chrom
         const page = await browser.newPage();
         let contentHtml = fs.readFileSync(htmlFile, 'utf8');
         await page.emulateMediaType('screen');
-        await page.setDefaultNavigationTimeout(360000);
+        await page.setDefaultNavigationTimeout(0);
         await page.goto('file://' + htmlFile);
         await page.setContent(contentHtml);
 
@@ -41,6 +41,7 @@ async function printPdf(htmlFile:string, pdfFile:string, optArgs:string[], chrom
             path: pdfFile, // Saves pdf to disk.
             preferCSSPageSize: true,
             printBackground: true,
+            timeout:0,
             margin: {
                 top: "20px",
                 left: "20px",
