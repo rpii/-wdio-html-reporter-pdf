@@ -6,6 +6,5 @@
 "reporter": "spec",
 "slow": 75,
 "timeout": 60000,
-"ui": "bdd",
-"compilers" : ['js:@babel/register']
+"ui": "bdd"
 }

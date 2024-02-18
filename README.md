@@ -1,6 +1,9 @@
 # wdio-html-reporter-pdf
 Generate a pdf from an html-report.  
-Requires version 8.0.6 or later of wdio-html-nice-reporter to generate the html report
+Requires version 8.1.0 or later of wdio-html-nice-reporter to generate the html report
+#### Rebuilt with the lateest version of puppeteer
+        Upgrade: added optional timeout parameter
+### Updated for module compatibility with webdriver 8
 #### Newest Features:
 
     Upgrade: Set timeout to 0 to prevent timeouts
@@ -25,7 +28,7 @@ Updated version of puppeteer to get rid of issues.
 
 
 ## Configuration
-Add a file called make-pdf.js in the root of the project.
+Add a file called make-pdf.ts in the root of the project.
 
 There are difficulties in puppeteer if you try to integrate the code into wdio.conf.js.
 
@@ -61,12 +64,12 @@ let printPdf = require('@rpii/wdio-html-reporter-pdf').default ;
 
 Add a line to your package.json under scripts
 ```javascript
-    "pdf": "node make-pdf.js"
+    "pdf": "node make-pdf.ts"
 ``` 
 To use an already installed chrome:  Add a line to your package.json under scripts
 
 ```javascript
-    "pdf-chrome-linux": "node make-pdf.js /usr/bin/google-chrome"
+    "pdf-chrome-linux": "node make-pdf.ts /usr/bin/google-chrome"
 ``` 
 
 ## Usage

@@ -3,13 +3,13 @@ const path = require( "path") ;
 const puppeteer = require('puppeteer');
 const fs = require('fs-extra');
 
-async function printPdf(htmlFile:string, pdfFile:string, optArgs:string[], chromePath:string ) {
+async function printPdf(htmlFile:string, pdfFile:string, optArgs:string[], timeout?:number, chromePath?:string ) {
     try {
         console.log("printPdf starting for " + htmlFile + " to " + pdfFile);
         let options = {
             headless: true,
-            timeout: 0,
             dumpio: true,
+            timeout: (timeout) ? timeout : 0,
             args: optArgs
         };
         if (chromePath) {

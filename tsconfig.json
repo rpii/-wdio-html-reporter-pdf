@@ -1,33 +1,19 @@
 {
-  "compilerOptions": {
-    "baseUrl": ".",
-    "target": "es6",
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "declaration": true,
-    "allowJs": true,
-    "noEmit": false,
-    "strict": true,
-    "isolatedModules": false,
-    "esModuleInterop": true,
-    "resolveJsonModule": true,
-    "allowSyntheticDefaultImports" : true,
-    "noImplicitAny": true,
-    "lib": [
-      "es2016",
-      "dom"
-    ],
-    "outDir": "./lib/",
-    "types": [
-      "node",
-      "puppeteer"
-    ]
-  },
-  "include": [
-    "./src/**/*.ts"
-  ],
+  "extends": "./tsconfig.base.json",
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "./test/**.ts"
   ],
-  "compileOnSave": false
-}
+  "compileOnSave": false,
+  "compilerOptions": {
+      "lib": [
+        "es2016",
+        "dom"
+      ],
+      "outDir": "./lib/",
+      "types": [
+        "node",
+        "puppeteer"
+      ]
+    }
+  }

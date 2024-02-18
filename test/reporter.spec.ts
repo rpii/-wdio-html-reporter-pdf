@@ -22,14 +22,13 @@ log4js.configure({
 
 describe('PdfPrint', () => {
 
-    describe('on create', function () {
-        this.timeout(30000);
+    describe('on create',  () => {
         it('should create the pdf file', async () => {
             let pdfFile = path.resolve(__dirname, '../test/reports/master-report.pdf');
             let htmlReportFile =  path.resolve(__dirname,'../test/reports/html-reports/master-report.html');
             // let options = ['--disable-gpu','--no-sandbox'] ;
             let options : string[] = ['--no-sandbox'] ;
-            await printPdf(htmlReportFile, pdfFile, options, undefined);
+            await printPdf(htmlReportFile, pdfFile, options, undefined, undefined);
         });
     });
 });

@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "target": "es2020",
+    "module": "NodeNext",
+    "moduleResolution":"NodeNext",
+    "declaration": true,
+    "allowJs": true,
+    "noEmit": false,
+    "strict": true,
+    "isolatedModules": false,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports" : true,
+    "skipLibCheck": true,
+    "noImplicitAny": false,
+    "outDir": "./lib/",
+    "types": [
+      "node"
+    ]
+  },
+  "include": [
+    "./src/**/*.ts",
+
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+  "compileOnSave": false
+}
