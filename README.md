@@ -1,8 +1,9 @@
 # wdio-html-reporter-pdf
 Generate a pdf from an html-report.  
 Requires version 8.1.0 or later of wdio-html-nice-reporter to generate the html report
-#### Rebuilt with the lateest version of puppeteer
-        Upgrade: added optional timeout parameter
+#### Converted to ES Module
+    bug fix for expanding sections in new puppeteer
+
 ### Updated for module compatibility with webdriver 8
 #### Newest Features:
 

@@ -1,8 +1,9 @@
 {
   "name": "@rpii/wdio-html-reporter-pdf",
-  "version": "8.0.1",
+  "version": "8.0.3",
   "description": "WebdriverIO report add on. Converts HTML formatted report to pdf",
   "main": "lib/printPdf.js",
+  "type": "module",
   "scripts": {
     "build": "tsc",
     "build:test": "tsc --project ./tsconfig-test.json",

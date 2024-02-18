@@ -1,5 +1,5 @@
-const path = require( "path") ;
-// let printPdf = require('@rpii/wdio-html-reporter-pdf').default ;
+import path from "path";
+// import printPdf from '@rpii/wdio-html-reporter-pdf' ;
 import printPdf from '../lib/printPdf.js' ;
 
 (async () => {

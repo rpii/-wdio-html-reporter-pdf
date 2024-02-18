@@ -1,7 +1,7 @@
 
-const path = require( "path") ;
-const puppeteer = require('puppeteer');
-const fs = require('fs-extra');
+import path from "path" ;
+import puppeteer from 'puppeteer';
+import fs from 'fs-extra';
 
 async function printPdf(htmlFile:string, pdfFile:string, optArgs:string[], timeout?:number, chromePath?:string ) {
     try {
@@ -25,17 +25,20 @@ async function printPdf(htmlFile:string, pdfFile:string, optArgs:string[], timeo
         await page.goto('file://' + htmlFile);
         await page.setContent(contentHtml);
 
-        await page.evaluate((_:any) => {
+        await page.evaluate(() => {
             document.querySelectorAll('.suite-header').forEach(item => {
                 //@ts-ignore
                 item.click();
             });
+            return Promise.resolve();
         });
-        await page.evaluate((_:any) => {
+
+        await page.evaluate(() => {
             document.querySelectorAll('.test-header').forEach(item => {
                 //@ts-ignore
                 item.click();
             });
+            return Promise.resolve();
         });
         const pdf = await page.pdf({
             path: pdfFile, // Saves pdf to disk.

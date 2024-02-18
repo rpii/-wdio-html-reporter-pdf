@@ -1,7 +1,7 @@
 import printPdf from '../lib/printPdf.js' ;
-const fs = require('fs-extra');
-const path = require('path');
-const log4js = require ('log4js') ;
+import path from 'path';
+import log4js from 'log4js' ;
+import url from "node:url";
 
 log4js.configure({
     appenders: {
@@ -24,8 +24,10 @@ describe('PdfPrint', () => {
 
     describe('on create',  () => {
         it('should create the pdf file', async () => {
-            let pdfFile = path.resolve(__dirname, '../test/reports/master-report.pdf');
-            let htmlReportFile =  path.resolve(__dirname,'../test/reports/html-reports/master-report.html');
+            const rootDir = path.dirname(url.fileURLToPath(new URL('.', import.meta.url)));
+            let pdfFile = path.join(rootDir, '/test/reports/master-report.pdf');
+            let htmlReportFile = path.join(rootDir, '/test/reports/html-reports/master-report.html');
+
             // let options = ['--disable-gpu','--no-sandbox'] ;
             let options : string[] = ['--no-sandbox'] ;
             await printPdf(htmlReportFile, pdfFile, options, undefined, undefined);
