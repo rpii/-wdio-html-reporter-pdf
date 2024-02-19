@@ -10,6 +10,7 @@ async function printPdf(htmlFile:string, pdfFile:string, optArgs:string[], timeo
             headless: true,
             dumpio: true,
             timeout: (timeout) ? timeout : 0,
+            protocolTimeout: 0,
             args: optArgs
         };
         if (chromePath) {
@@ -19,11 +20,9 @@ async function printPdf(htmlFile:string, pdfFile:string, optArgs:string[], timeo
 
         const browser = await puppeteer.launch(options);
         const page = await browser.newPage();
-        let contentHtml = fs.readFileSync(htmlFile, 'utf8');
         await page.emulateMediaType('screen');
         await page.setDefaultNavigationTimeout(0);
-        await page.goto('file://' + htmlFile);
-        await page.setContent(contentHtml);
+        await page.goto('file://' + htmlFile, { waitUntil: 'domcontentloaded'});
 
         await page.evaluate(() => {
             document.querySelectorAll('.suite-header').forEach(item => {
